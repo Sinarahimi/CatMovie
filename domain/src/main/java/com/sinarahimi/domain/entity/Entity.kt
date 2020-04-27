@@ -19,6 +19,7 @@ sealed class Entity {
         val vote_count: Long,
         val vote_average: Long,
         val backdrop_path: String,
+        val release_date: String,
         val poster_path: String,
         val overview: String
 

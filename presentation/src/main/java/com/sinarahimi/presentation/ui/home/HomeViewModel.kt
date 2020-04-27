@@ -10,5 +10,12 @@ import androidx.lifecycle.ViewModel
 class HomeViewModel :ViewModel(){
 
 
-    val getTradingLiveData:LiveData<>
+//    val getTradingLiveData:LiveData<>
+
+    //class CryptoListViewModel
+    //@Inject constructor(
+    //    private val cryptoListUseCases: CryptoListUseCases,
+    //    @Named(SCHEDULER_IO) val subscribeOnScheduler:Scheduler,
+    //    @Named(SCHEDULER_MAIN_THREAD) val observeOnScheduler: Scheduler
+    //) : ViewModel()
 }

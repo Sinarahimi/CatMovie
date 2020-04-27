@@ -11,13 +11,21 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="TextAppearance_regular_caption" parent="TextAppearance.AppCompat.Caption">
+    <style name="TextStyle_regular_caption" parent="TextAppearance.AppCompat.Caption">
         <item name="android:textSize">@dimen/text_regular_caption</item>
         <item name="fontFamily">@font/roboto_regular</item>
     </style>
 
-    <style name="TextAppearance_headline_subtitle_medium" parent="TextAppearance.AppCompat.Headline">
+    <style name="TextStyle_headline_subtitle_medium" parent="TextAppearance.AppCompat.Headline">
         <item name="android:textSize">@dimen/text_size_headline_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="TextStyle_headline_subtitle" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/text_size_headline_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="fontFamily">@font/roboto_medium</item>
     </style>
 </resources>

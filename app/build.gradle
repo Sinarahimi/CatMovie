@@ -14,13 +14,24 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [ MOVIE_API:getApiKey()]
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        applicationVariants.all { variant ->
+            variant.buildConfigField "String", "MOVIE_API" , "\""+getApiKey()+"\""
+        }
     }
+}
+
+def getApiKey(){
+    def Properties props = new Properties()
+    props.load(new FileInputStream(new File('local.properties')))
+    return props['MOVIE_API']
 }
 
 dependencies {
