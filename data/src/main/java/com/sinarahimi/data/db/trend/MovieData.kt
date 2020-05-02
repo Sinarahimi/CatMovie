@@ -8,10 +8,10 @@ import androidx.room.PrimaryKey
 // Created by Sina Rahimi on 2/24/20.
 //
 
-sealed class TrendData {
+sealed class MovieData {
 
     @Entity(tableName = "trend_table")
-    data class Trend(
+    data class Trade(
         @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = false) val id: Long,
         @ColumnInfo(name = "title") val title: String,
         @ColumnInfo(name = "video") val video: Boolean,
@@ -20,7 +20,20 @@ sealed class TrendData {
         @ColumnInfo(name = "backdrop_path") val backdrop_path: String,
         @ColumnInfo(name = "poster_path") val poster_path: String,
         @ColumnInfo(name = "overview") val overview: String
-    ) : TrendData()
+    ) : MovieData()
+
+    @Entity(tableName = "now_playing_table")
+    data class NowPlaying(
+        @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = false) val id: Long,
+        @ColumnInfo(name = "title") val title: String,
+        @ColumnInfo(name = "poster_path") val poster_path: String
+    ) : MovieData()
+
+    @Entity(tableName = "category_table")
+    data class Category(
+        @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = false) val id: Long,
+        @ColumnInfo(name = "name") val name: String
+    ) : MovieData()
 
 
 }

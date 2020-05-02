@@ -9,8 +9,10 @@ import com.sinarahimi.domain.entity.Entity
 //
 
 @Dao
-interface TrendDao{
+interface MovieDao{
 
     @Query("SELECT * FROM trend_table ")
     fun getTrendList():List<Entity.Trend>
+
+
 }
