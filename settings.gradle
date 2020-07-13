@@ -1,2 +1,3 @@
 include ':app', ':data', ':presentation', ':domain'
 rootProject.name='Cat Movie'
+include ':core'
