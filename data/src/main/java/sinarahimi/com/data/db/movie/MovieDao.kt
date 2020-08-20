@@ -1,18 +1,14 @@
-package com.sinarahimi.data.db.trend
+package sinarahimi.com.data.db.movie
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.sinarahimi.data.db.trend.MovieData
 
-//
-// Created by Sina Rahimi on 2/24/20.
-//
-/*Trend Movie*/
 @Dao
-interface TrendDao {
-
+interface MovieDao{
 
     /**
      * Obtain all database added trend movie .
@@ -20,13 +16,13 @@ interface TrendDao {
      * @return [LiveData] List with favorite characters.
      */
     @Query("SELECT * FROM trend_table ")
-    fun selectAll(): LiveData<List<TrendData.Trend>>
+    fun selectAll(): LiveData<List<MovieData.Movie>>
 
     /*
     * Add Trend movie to database
     * */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(TrendList: List<TrendData.Trend>)
+    fun insert(movieList: List<MovieData.Movie>)
 
 
     /*Category Movie*/
@@ -37,6 +33,4 @@ interface TrendDao {
      */
 //    @Query("SELECT * FROM category_table ")
 //    suspend fun getCategoryList(): List<TrendData.Category>
-
-
 }

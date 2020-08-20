@@ -20,7 +20,6 @@ interface MovieApi {
         @Path("media_type") media_type: String,
         @Path("time_window") time_window: String
     ): Response<Response<Dto.Trend>>
-    //
 
 
     /**
@@ -35,12 +34,6 @@ interface MovieApi {
 //language = en-US
 //page = 1
 
-
-    /**
-     * Categories
-     */
-    @GET("/genre/movie/list")
-    suspend fun getCategories(@Query("api_key") apiKey: String): Response<Dto.ResponseRequestGenre>
 
     sealed class Dto {
 
