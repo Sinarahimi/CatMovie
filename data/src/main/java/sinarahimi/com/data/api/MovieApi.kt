@@ -17,9 +17,10 @@ interface MovieApi {
      */
     @GET("/trending/{media_type}/{time_window}")
     suspend fun getTrendingByMediaTypeAndTimeWindow(
+        @Query("api_key") apiKey: String,
         @Path("media_type") media_type: String,
         @Path("time_window") time_window: String
-    ): Response<Response<Dto.Trend>>
+    ): Response<ArrayList<Dto.Trend>>
 
 
     /**
