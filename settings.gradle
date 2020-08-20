@@ -1,3 +1,6 @@
-include ':app', ':data', ':presentation', ':domain'
+include ':app'
 rootProject.name='Cat Movie'
 include ':core'
+include ':data'
+include ':presentation'
+include ':domain'
