@@ -12,7 +12,7 @@ import sinarahimi.com.data.db.movie.MovieDao
 
 
 @Database(
-    entities = [MovieData.Movie::class,
+    entities = [MovieData.Trend::class,
         MovieData.NowPlaying::class, MovieData.Category::class], version = 1, exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

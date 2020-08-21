@@ -20,20 +20,19 @@ interface MovieApi {
         @Query("api_key") apiKey: String,
         @Path("media_type") media_type: String,
         @Path("time_window") time_window: String
-    ): Response<ArrayList<Dto.Trend>>
+    ): Response<Dto.BaseResponse<Dto.Trend>>
 
 
     /**
      * Now Playing
+     * language = en-US
+     * page = 1
      */
     @GET("movie/now_playing")
     suspend fun getNowPlaying(
         @Query("api_key") apiKey: String, @Query("language") language: String,
         @Query("page") page: Int
-    ): Response<Dto.ResponseRequest<Dto.NowPlaying>>
-    //api_key
-//language = en-US
-//page = 1
+    ): Response<Dto.BaseResponse<Dto.NowPlaying>>
 
 
     sealed class Dto {
@@ -59,7 +58,7 @@ interface MovieApi {
             @SerializedName("name") val name: String
         )
 
-        data class ResponseRequest<T>(
+        data class BaseResponse<T>(
             @SerializedName("page") val page: Long,
             @SerializedName("total_pages") val total_pages: Long,
             @SerializedName("total_results") val total_results: Long,

@@ -6,7 +6,7 @@ package sinarahimi.com.domain.entity
 
 sealed class CatMovieEntity {
 
-    data class Movie(
+    data class Trend(
         val id: Long,
         val title: String,
         val video: Boolean,

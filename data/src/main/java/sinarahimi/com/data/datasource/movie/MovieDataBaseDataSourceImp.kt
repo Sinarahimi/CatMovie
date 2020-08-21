@@ -12,12 +12,12 @@ class MovieDataBaseDataSourceImp(context: Context) : MovieDataBaseDataSource {
     private val appDataBase = DataBaseBuilder.getInstance(context)
     private val movieDao = appDataBase.movieDao()
 
-    override suspend fun getAllTrends(): List<MovieData.Movie> {
+    override suspend fun getAllTrends(): List<MovieData.Trend> {
         return movieDao.getAllTrends()
     }
 
-    override suspend fun insertAllTrends(movieList: List<MovieData.Movie>) {
-        movieDao.insertAllTrends(movieList)
+    override suspend fun insertAllTrends(trendList: List<MovieData.Trend>) {
+        movieDao.insertAllTrends(trendList)
     }
 
     override suspend fun getAllCategories(): List<MovieData.Category> {

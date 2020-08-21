@@ -7,9 +7,9 @@ import com.sinarahimi.data.db.trend.MovieData
  */
 interface MovieDataBaseDataSource {
 
-    suspend fun getAllTrends(): List<MovieData.Movie>
+    suspend fun getAllTrends(): List<MovieData.Trend>
 
-    suspend fun insertAllTrends(movieList: List<MovieData.Movie>)
+    suspend fun insertAllTrends(trendList: List<MovieData.Trend>)
 
     suspend fun getAllCategories(): List<MovieData.Category>
 

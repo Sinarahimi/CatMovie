@@ -22,13 +22,13 @@ interface MovieDao {
      * @return List with movies.
      */
     @Query("SELECT * FROM trend_table ")
-    suspend fun getAllTrends(): List<MovieData.Movie>
+    suspend fun getAllTrends(): List<MovieData.Trend>
 
     /*
     * Add Trend movie to database
     * */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllTrends(movieList: List<MovieData.Movie>)
+    fun insertAllTrends(trendList: List<MovieData.Trend>)
 
 
     /*Category*/

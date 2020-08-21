@@ -13,7 +13,7 @@ import androidx.room.PrimaryKey
 sealed class MovieData {
 
     @Entity(tableName = "trend_table")
-    data class Movie(
+    data class Trend(
         @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = false) val id: Long,
         @ColumnInfo(name = "title") val title: String,
         @ColumnInfo(name = "video") val video: Boolean,
