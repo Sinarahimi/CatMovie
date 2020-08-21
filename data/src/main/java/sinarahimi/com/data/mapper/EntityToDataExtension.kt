@@ -7,7 +7,7 @@ import sinarahimi.com.domain.entity.CatMovieEntity
  * Created by Sina Rahimi on 8/20/2020.
  */
 
-fun MovieData.Movie.map() = CatMovieEntity.Movie(
+fun CatMovieEntity.Movie.map() =  MovieData.Movie(
     id = id,
     title = title,
     video = video,
