@@ -5,11 +5,16 @@ import androidx.room.RoomDatabase
 import com.sinarahimi.data.db.trend.MovieData
 import sinarahimi.com.data.db.movie.MovieDao
 
-//
-// Created by Sina Rahimi on 2/24/20.
-//
+/**
 
-@Database(entities = [MovieData.Movie::class], version = 1, exportSchema = false)
+ Created by Sina Rahimi on 2/24/20.
+*/
+
+
+@Database(
+    entities = [MovieData.Movie::class,
+        MovieData.NowPlaying::class, MovieData.Category::class], version = 1, exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao

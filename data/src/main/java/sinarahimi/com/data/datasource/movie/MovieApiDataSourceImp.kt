@@ -19,14 +19,14 @@ class MovieApiDataSourceImp : MovieApiDataSource   {
         time_window: String
     ): Response<ArrayList<MovieApi.Dto.Trend>> {
 
-        return service.getTrendingByMediaTypeAndTimeWindow()
+        return service.getTrendingByMediaTypeAndTimeWindow(API_KEY,media_type,time_window)
     }
 
     override suspend fun getNowPlaying(
         language: String,
         page: Int
     ): Response<MovieApi.Dto.ResponseRequest<MovieApi.Dto.NowPlaying>> {
-        return service.getNowPlaying()
+        return service.getNowPlaying(API_KEY,language,page)
     }
 
 }

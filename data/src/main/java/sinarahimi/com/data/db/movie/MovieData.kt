@@ -4,9 +4,11 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-//
-// Created by Sina Rahimi on 2/24/20.
-//
+/**
+
+ Created by Sina Rahimi on 2/24/20.
+*/
+
 
 sealed class MovieData {
 
