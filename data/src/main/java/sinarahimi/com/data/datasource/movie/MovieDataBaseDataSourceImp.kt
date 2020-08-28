@@ -1,19 +1,19 @@
 package sinarahimi.com.data.datasource.movie
 
-import android.content.Context
 import com.sinarahimi.data.db.trend.MovieData
-import sinarahimi.com.data.db.DataBaseBuilder
+import sinarahimi.com.data.db.movie.MovieDao
 
 /**
  * Created by Sina Rahimi on 8/20/2020.
  */
-class MovieDataBaseDataSourceImp(context: Context) : MovieDataBaseDataSource {
-
-    private val appDataBase = DataBaseBuilder.getInstance(context)
-    private val movieDao = appDataBase.movieDao()
+class MovieDataBaseDataSourceImp(private val movieDao: MovieDao) : MovieDataBaseDataSource {
 
     override suspend fun getAllTrends(): List<MovieData.Trend> {
         return movieDao.getAllTrends()
+    }
+
+    override suspend fun getTrendSize(): Int {
+        return movieDao.getTrendSize()
     }
 
     override suspend fun insertAllTrends(trendList: List<MovieData.Trend>) {

@@ -9,6 +9,8 @@ interface MovieDataBaseDataSource {
 
     suspend fun getAllTrends(): List<MovieData.Trend>
 
+    suspend fun getTrendSize(): Int
+
     suspend fun insertAllTrends(trendList: List<MovieData.Trend>)
 
     suspend fun getAllCategories(): List<MovieData.Category>

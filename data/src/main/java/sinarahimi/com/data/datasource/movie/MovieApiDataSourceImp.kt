@@ -14,9 +14,20 @@ import sinarahimi.com.data.BuildConfig
  */
 class MovieApiDataSourceImp : MovieApiDataSource {
 
-    private val API_KEY = BuildConfig.API_KEY
+    private val apiKey = BuildConfig.API_KEY
 
     private val service = RetrofitHelper.retrofitService(MovieApi::class.java)
+
+    companion object {
+
+        // For Singleton instantiation
+        @Volatile private var instance: MovieApiDataSourceImp? = null
+
+        fun getInstance(movieApiDataSourceImp: MovieApiDataSourceImp) =
+            instance ?: synchronized(this) {
+                instance ?: MovieApiDataSourceImp().also { instance = it }
+            }
+    }
 
     override suspend fun getTrendingByMediaTypeAndTimeWindow(
         media_type: String,
@@ -24,7 +35,7 @@ class MovieApiDataSourceImp : MovieApiDataSource {
     ): Deferred<Response<MovieApi.Dto.BaseResponse<MovieApi.Dto.Trend>>> =
         withContext(Dispatchers.IO) {
             async {
-                service.getTrendingByMediaTypeAndTimeWindow(API_KEY, media_type, time_window)
+                service.getTrendingByMediaTypeAndTimeWindow(apiKey, media_type, time_window)
             }
         }
 
@@ -34,7 +45,7 @@ class MovieApiDataSourceImp : MovieApiDataSource {
     ): Deferred<Response<MovieApi.Dto.BaseResponse<MovieApi.Dto.NowPlaying>>> =
         withContext(Dispatchers.IO) {
             async {
-                service.getNowPlaying(API_KEY, language, page)
+                service.getNowPlaying(apiKey, language, page)
             }
         }
 

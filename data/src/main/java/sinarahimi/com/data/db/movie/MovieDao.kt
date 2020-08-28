@@ -30,6 +30,11 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllTrends(trendList: List<MovieData.Trend>)
 
+ /*
+    * get size of the Trend
+    * */
+    @Query("SELECT COUNT(*) FROM trend_table")
+    fun getTrendSize(): Int
 
     /*Category*/
     /**
