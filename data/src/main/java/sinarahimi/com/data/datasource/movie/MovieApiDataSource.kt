@@ -1,7 +1,6 @@
 package sinarahimi.com.data.datasource.movie
 
 import com.sinarahimi.data.api.MovieApi
-import kotlinx.coroutines.Deferred
 import retrofit2.Response
 
 /**
@@ -9,13 +8,13 @@ import retrofit2.Response
  */
 interface MovieApiDataSource {
 
-    suspend fun getTrendingByMediaTypeAndTimeWindow(
+    suspend fun getTrends(
         media_type: String,
         time_window: String
-    ):Deferred<Response<MovieApi.Dto.BaseResponse<MovieApi.Dto.Trend>>>
+    ):Response<MovieApi.Dto.BaseResponse<MovieApi.Dto.Trend>>
 
     suspend fun getNowPlaying(
         language: String,
         page: Int
-    ):Deferred<Response<MovieApi.Dto.BaseResponse<MovieApi.Dto.NowPlaying>>>
+    ):Response<MovieApi.Dto.BaseResponse<MovieApi.Dto.NowPlaying>>
 }

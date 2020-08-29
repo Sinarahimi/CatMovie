@@ -7,7 +7,8 @@ import sinarahimi.com.domain.entity.CatMovieEntity
  */
 interface MovieRepository {
 
-
-    suspend fun getAllTrend( media_type: String,
-                             time_window: String):ArrayList<CatMovieEntity.Trend>
+    suspend fun getAllTrend(
+        media_type: String,
+        time_window: String
+    ): List<CatMovieEntity.Trend>
 }

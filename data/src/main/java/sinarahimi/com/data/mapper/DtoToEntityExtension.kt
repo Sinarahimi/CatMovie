@@ -23,3 +23,8 @@ fun MovieApi.Dto.NowPlaying.map() = CatMovieEntity.NowPlaying(
     title = title,
     poster_path = poster_path
 )
+
+fun MovieApi.Dto.Category.map() = CatMovieEntity.Category(
+    id = id,
+    name = name
+)

@@ -1,19 +1,21 @@
 package sinarahimi.com.data.datasource.movie
 
-import com.sinarahimi.data.db.trend.MovieData
+import sinarahimi.com.domain.entity.CatMovieEntity
 
 /**
  * Created by Sina Rahimi on 8/20/2020.
  */
 interface MovieDataBaseDataSource {
 
-    suspend fun getAllTrends(): List<MovieData.Trend>
+    suspend fun getAllTrends(): List<CatMovieEntity.Trend>
 
     suspend fun getTrendSize(): Int
 
-    suspend fun insertAllTrends(trendList: List<MovieData.Trend>)
+    suspend fun isTrendSEmpty(): Boolean
 
-    suspend fun getAllCategories(): List<MovieData.Category>
+    suspend fun insertAllTrends(trendList: List<CatMovieEntity.Trend>)
 
-    suspend fun insertAllCategories(categories: List<MovieData.Category>)
+    suspend fun getAllCategories(): List<CatMovieEntity.Category>
+
+    suspend fun insertAllCategories(categories: List<CatMovieEntity.Category>)
 }

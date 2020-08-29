@@ -62,7 +62,7 @@ interface MovieApi {
             @SerializedName("page") val page: Long,
             @SerializedName("total_pages") val total_pages: Long,
             @SerializedName("total_results") val total_results: Long,
-            @SerializedName("results") val results: ArrayList<T>
+            @SerializedName("results") val results: List<T>
         )
 
         data class ResponseRequestGenre(

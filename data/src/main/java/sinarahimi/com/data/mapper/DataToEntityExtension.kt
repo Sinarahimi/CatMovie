@@ -23,3 +23,8 @@ fun MovieData.NowPlaying.map() = CatMovieEntity.NowPlaying(
     title = title,
     poster_path = poster_path
     )
+
+fun MovieData.Category.map() = CatMovieEntity.Category(
+    id = id,
+    name = name
+)
