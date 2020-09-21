@@ -11,7 +11,7 @@ interface MovieDataBaseDataSource {
 
     suspend fun getTrendSize(): Int
 
-    suspend fun isTrendSEmpty(): Boolean
+    suspend fun isTrendsEmpty(): Boolean
 
     suspend fun insertAllTrends(trendList: List<CatMovieEntity.Trend>)
 

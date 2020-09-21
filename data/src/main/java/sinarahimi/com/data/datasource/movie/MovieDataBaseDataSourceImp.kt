@@ -17,7 +17,7 @@ class MovieDataBaseDataSourceImp(private val movieDao: MovieDao) : MovieDataBase
         return movieDao.getTrendSize()
     }
 
-    override suspend fun isTrendSEmpty(): Boolean {
+    override suspend fun isTrendsEmpty(): Boolean {
         return movieDao.getTrendSize() <= 0
     }
 

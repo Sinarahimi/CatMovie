@@ -18,19 +18,27 @@ class MovieRepositoryImp(
         time_window: String
     ): List<CatMovieEntity.Trend> {
 
-        val result = try {
+        try {
 
-            if (movieDbSource.isTrendSEmpty()) {
+            //TODO fix the null part
+            if (movieDbSource.isTrendsEmpty()) {
 
                 val response = movieApiSource.getTrends(media_type, time_window)
 
                 if (response.isSuccessful) {
 
-                    val trendList = response.body()?.results?.map { it.map() }
-                    movieDbSource.insertAllTrends(trendList)
-                } else {
+                    val result = response.body()?.results
+                    if (result != null) {
 
+                        val mappedList = result.map { it.map() }
+                        movieDbSource.insertAllTrends(mappedList)
+                    }
+
+                } else {
+                    //TODO here
                 }
+
+                return movieDbSource.getAllTrends()
             } else {
 
                 return movieDbSource.getAllTrends()
@@ -38,8 +46,8 @@ class MovieRepositoryImp(
 
         } catch (cause: Throwable) {
 
+            throw cause
         }
-
     }
 
 
