@@ -11,7 +11,6 @@ import sinarahimi.com.presentation.ui.common.SingleLiveEvent
 
 class TrendViewModel(private val movieUseCaseImp: MovieUseCaseImp) : ViewModel() {
 
-
     private val _trendsLiveData = MutableLiveData<List<CatMovieEntity.Trend>>()
 
     val trendsLiveData:LiveData<List<CatMovieEntity.Trend>> get() = _trendsLiveData

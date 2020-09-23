@@ -6,26 +6,37 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import sinarahimi.com.domain.entity.CatMovieEntity
 
 import sinarahimi.com.presentation.R
+import sinarahimi.com.presentation.ui.extension.observe
 
 class TrendFragment : Fragment() {
+
+    private val viewModel: TrendViewModel by viewModel()
 
     companion object {
         fun newInstance() = TrendFragment()
     }
 
-    private val viewModel: TrendViewModel by viewModel()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.trend_fragment, container, false)
+    ): View? = inflater.inflate(R.layout.trend_fragment, container, false)
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        observe(viewModel.trendsLiveData, ::showTrends)
+        observe(viewModel.errorState,::showError)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    private fun showError(throwable: Throwable?) {
+
+    }
+
+    private fun showTrends(trends: List<CatMovieEntity.Trend>) {
 
     }
 }
