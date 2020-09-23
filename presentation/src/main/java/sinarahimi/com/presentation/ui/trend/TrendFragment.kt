@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 import sinarahimi.com.presentation.R
 
 class TrendFragment : Fragment() {
@@ -13,7 +15,7 @@ class TrendFragment : Fragment() {
         fun newInstance() = TrendFragment()
     }
 
-//    private  var viewModel: TrendViewModel by viewModel()
+    private val viewModel: TrendViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,8 +26,6 @@ class TrendFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-//        viewModel = ViewModelProvider(this).get(TrendViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
+    }
 }

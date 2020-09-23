@@ -7,7 +7,7 @@ import sinarahimi.com.domain.entity.CatMovieEntity
  */
 interface MovieUseCase {
 
-    fun getAllTrend(mediaType: String,
+    suspend fun getAllTrend(mediaType: String,
                     timeWindow: String
     ): List<CatMovieEntity.Trend>
 

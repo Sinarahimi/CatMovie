@@ -8,7 +8,7 @@ import sinarahimi.com.domain.repository.movie.MovieRepository
  */
 class MovieUseCaseImp(private val movieRepository: MovieRepository) : MovieUseCase {
 
-    override fun getAllTrend(mediaType: String, timeWindow: String): List<CatMovieEntity.Trend> {
+    override suspend fun getAllTrend(mediaType: String, timeWindow: String): List<CatMovieEntity.Trend> {
 
         return movieRepository.getAllTrend(mediaType,timeWindow)
     }

@@ -1,14 +1,33 @@
 package sinarahimi.com.presentation.ui.trend
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import sinarahimi.com.domain.entity.CatMovieEntity
 import sinarahimi.com.domain.usecase.movie.MovieUseCaseImp
+import sinarahimi.com.presentation.ui.common.SingleLiveEvent
 
 class TrendViewModel(private val movieUseCaseImp: MovieUseCaseImp) : ViewModel() {
 
-    //TODO
 
-//    fun getAllTrends(mediaType: String, timeWindow: String):LiveData<List<CatMovieEntity.Trend>> {
-//
-//        return movieUseCaseImp.getAllTrend(mediaType,timeWindow)
-//    }
+    private val _trendsLiveData = MutableLiveData<List<CatMovieEntity.Trend>>()
+
+    val trendsLiveData:LiveData<List<CatMovieEntity.Trend>> get() = _trendsLiveData
+    var errorState: SingleLiveEvent<Throwable?> = SingleLiveEvent()
+
+    fun getAllTrends(mediaType: String, timeWindow: String) = viewModelScope.launch {
+
+            kotlin.runCatching {
+
+                    movieUseCaseImp.getAllTrend(mediaType,timeWindow)
+            }.onFailure{throwable ->
+
+                errorState.postValue(throwable)
+            }.onSuccess {trendList ->
+
+                _trendsLiveData.postValue(trendList)
+            }
+    }
 }
