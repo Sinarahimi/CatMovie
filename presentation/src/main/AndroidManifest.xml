@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sinarahimi.com.presentation">
 
-    <application>
-        <activity android:name=".ui.MainActivity"></activity>
-    </application>
+    <application
+        android:name=".ui.MainApplication">
 
+        <activity android:name=".ui.MainActivity" />
+
+    </application>
 </manifest>

@@ -41,16 +41,7 @@ ext {
     presentationDependencies = [
             lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
             lifecycleCommon    : "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion",
-
-            koinScope           : "org.koin:koin-androidx-scope:$koinVersion",
-            koinviewmodel            : "org.koin:koin-androidx-viewmodel:$koinVersion",
-            koinfragment            : "org.koin:koin-androidx-fragment:$koinVersion",
-            dagger             : "com.google.dagger:dagger:$daggerVersion",
-            daggerCompiler     : "com.google.dagger:dagger-compiler:$daggerVersion",
+            koinviewmodel      : "org.koin:koin-androidx-viewmodel:$koinVersion",
     ]
-//implementation "org.koin:koin-androidx-scope:$koin_version"
-//// Koin AndroidX ViewModel features
-//implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-//// Koin AndroidX Fragment features
-//implementation "org.koin:koin-androidx-fragment:$koin_version"
+
 }

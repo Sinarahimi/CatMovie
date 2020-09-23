@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import sinarahimi.com.presentation.R
 
 class TrendFragment : Fragment() {
@@ -14,7 +13,7 @@ class TrendFragment : Fragment() {
         fun newInstance() = TrendFragment()
     }
 
-    private lateinit var viewModel: TrendViewModel
+//    private  var viewModel: TrendViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +24,7 @@ class TrendFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TrendViewModel::class.java)
+//        viewModel = ViewModelProvider(this).get(TrendViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
