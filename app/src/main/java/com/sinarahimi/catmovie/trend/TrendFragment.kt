@@ -1,14 +1,13 @@
-package sinarahimi.com.presentation.ui.trend
+package com.sinarahimi.catmovie.trend
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.sinarahimi.catmovie.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import sinarahimi.com.domain.entity.CatMovieEntity
-
-import sinarahimi.com.presentation.R
 import sinarahimi.com.presentation.ui.extension.observe
 
 class TrendFragment : Fragment() {

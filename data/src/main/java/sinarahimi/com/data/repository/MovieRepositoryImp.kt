@@ -1,7 +1,7 @@
 package sinarahimi.com.data.repository
 
-import sinarahimi.com.data.datasource.movie.MovieApiDataSourceImp
-import sinarahimi.com.data.datasource.movie.MovieDataBaseDataSourceImp
+import sinarahimi.com.data.datasource.movie.MovieApiDataSource
+import sinarahimi.com.data.datasource.movie.MovieDataBaseDataSource
 import sinarahimi.com.data.mapper.map
 import sinarahimi.com.domain.entity.CatMovieEntity
 
@@ -9,8 +9,8 @@ import sinarahimi.com.domain.entity.CatMovieEntity
  * Created by Sina Rahimi on 8/21/2020.
  */
 class MovieRepositoryImp(
-    private val movieDbSource: MovieDataBaseDataSourceImp,
-    private val movieApiSource: MovieApiDataSourceImp
+    private val movieDbSource: MovieDataBaseDataSource,
+    private val movieApiSource: MovieApiDataSource
 ) : MovieRepository {
 
     override suspend fun getAllTrend(

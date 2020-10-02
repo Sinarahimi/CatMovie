@@ -10,6 +10,4 @@ interface MovieUseCase {
     suspend fun getAllTrend(mediaType: String,
                     timeWindow: String
     ): List<CatMovieEntity.Trend>
-
-
 }

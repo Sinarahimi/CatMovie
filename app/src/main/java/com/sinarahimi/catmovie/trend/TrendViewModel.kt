@@ -1,4 +1,4 @@
-package sinarahimi.com.presentation.ui.trend
+package com.sinarahimi.catmovie.trend
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +13,7 @@ class TrendViewModel(private val movieUseCase: MovieUseCase) : ViewModel() {
 
     private val _trendsLiveData = MutableLiveData<List<CatMovieEntity.Trend>>()
 
-    val trendsLiveData:LiveData<List<CatMovieEntity.Trend>> get() = _trendsLiveData
+    val trendsLiveData: LiveData<List<CatMovieEntity.Trend>> get() = _trendsLiveData
     var errorState: SingleLiveEvent<Throwable?> = SingleLiveEvent()
 
     fun getAllTrends(mediaType: String, timeWindow: String) = viewModelScope.launch {

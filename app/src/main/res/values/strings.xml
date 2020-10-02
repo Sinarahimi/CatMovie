@@ -1,3 +1,5 @@
 <resources>
+
+    <string name="title_trending">Trending</string>
     <string name="app_name">Cat Movie</string>
 </resources>
