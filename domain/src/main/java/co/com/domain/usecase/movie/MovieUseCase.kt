@@ -5,9 +5,13 @@ import sinarahimi.com.domain.entity.CatMovieEntity
 /**
  * Created by Sina Rahimi on 8/30/2020.
  */
-interface MovieUseCase {
+class MovieUseCase : UseCase {
 
-    suspend fun getAllTrend(mediaType: String,
-                    timeWindow: String
-    ): List<CatMovieEntity.Trend>
+    override suspend fun getAllTrend(
+        mediaType: String,
+        timeWindow: String
+    ): List<CatMovieEntity.Trend> {
+        return
+    }
+
 }

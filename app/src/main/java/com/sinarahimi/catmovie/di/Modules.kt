@@ -2,11 +2,13 @@ package com.sinarahimi.catmovie.di
 
 import android.app.Application
 import androidx.room.Room
+import com.sinarahimi.catmovie.trend.TrendViewModel
 import com.sinarahimi.data.api.MovieApi
 import com.sinarahimi.data.db.AppDatabase
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -49,6 +51,15 @@ val repositoryModule = module {
     single { provideMovieRepositoryImp(get(), get()) }
 
     single { provideMovieDataBaseDataSourceImp(get()) }
+}
+
+val useCasesModule = module {
+    factory {   }
+}
+
+val viewModelModule = module {
+
+    viewModel { TrendViewModel(get()) }
 }
 
 val databaseModule = module {
