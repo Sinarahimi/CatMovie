@@ -7,14 +7,19 @@ import sinarahimi.com.data.db.movie.MovieDao
 
 /**
 
- Created by Sina Rahimi on 2/24/20.
-*/
-
+Created by Sina Rahimi on 2/24/20.
+ */
 
 @Database(
-    entities = [MovieData.Trend::class,
-        MovieData.NowPlaying::class, MovieData.Category::class], version = 1, exportSchema = false
+    entities = [
+        MovieData.Trend::class,
+        MovieData.NowPlaying::class,
+        MovieData.Category::class
+    ],
+    version = 1,
+    exportSchema = false
 )
+
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao

@@ -37,13 +37,15 @@ ext {
             room                  : "androidx.room:room-runtime:$roomVersion",
             roomCompiler          : "androidx.room:room-compiler:$roomVersion",
             roomCommon            : "androidx.room:room-common:$roomVersion",
+            koinAndroid           : "org.koin:koin-android:$koinVersion",
+            koinViewmodel         : "org.koin:koin-android-viewmodel:$koinVersion",
     ]
 
     presentationDependencies = [
             lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
             lifecycleCommon    : "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion",
-            koinviewmodel      : "org.koin:koin-androidx-viewmodel:$koinVersion",
-            koinANdroid        : "org.koin:koin-android:$koinVersion",
+            koinViewmodel      : "org.koin:koin-androidx-viewmodel:$koinVersion",
+            koinAndroid        : "org.koin:koin-android:$koinVersion",
             koinScope          : "org.koin:koin-androidx-scope:$koinVersion",
             coroutines         : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
     ]

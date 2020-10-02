@@ -11,18 +11,6 @@ class MovieApiDataSourceImp(private val api: MovieApi) : MovieApiDataSource {
 
     private val apiKey = BuildConfig.API_KEY
 
-    companion object {
-
-        // For Singleton instantiation
-        @Volatile
-        private var instance: MovieApiDataSourceImp? = null
-
-        fun getInstance(api: MovieApi) =
-            instance ?: synchronized(this) {
-                instance ?: MovieApiDataSourceImp(api).also { instance = it }
-            }
-    }
-
     override suspend fun getTrends(
         media_type: String,
         time_window: String
