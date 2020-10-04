@@ -2,6 +2,7 @@ package com.sinarahimi.catmovie.di
 
 import android.app.Application
 import androidx.room.Room
+import co.com.domain.usecase.movie.MovieUseCaseImp
 import com.sinarahimi.catmovie.trend.TrendViewModel
 import com.sinarahimi.data.api.MovieApi
 import com.sinarahimi.data.db.AppDatabase
@@ -20,6 +21,7 @@ import sinarahimi.com.data.datasource.movie.MovieDataBaseDataSourceImp
 import sinarahimi.com.data.db.movie.MovieDao
 import sinarahimi.com.data.repository.MovieRepository
 import sinarahimi.com.data.repository.MovieRepositoryImp
+import sinarahimi.com.domain.usecase.movie.MovieUseCase
 import java.util.concurrent.TimeUnit
 
 /**
@@ -54,7 +56,9 @@ val repositoryModule = module {
 }
 
 val useCasesModule = module {
-    factory {   }
+
+
+    single<MovieUseCase> { MovieUseCaseImp() }
 }
 
 val viewModelModule = module {

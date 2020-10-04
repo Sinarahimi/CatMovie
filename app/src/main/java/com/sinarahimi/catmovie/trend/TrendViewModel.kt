@@ -11,6 +11,9 @@ import sinarahimi.com.presentation.ui.common.SingleLiveEvent
 
 class TrendViewModel(private val movieUseCase: MovieUseCase) : ViewModel() {
 
+    //  //Inject use case using Koin
+    //  private val landingUseCase : LandingUseCase by inject()
+
     private val _trendsLiveData = MutableLiveData<List<CatMovieEntity.Trend>>()
 
     val trendsLiveData: LiveData<List<CatMovieEntity.Trend>> get() = _trendsLiveData
