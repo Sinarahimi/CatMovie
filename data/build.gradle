@@ -26,25 +26,15 @@ android {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3\"")
-            buildConfigField("String", "API_KEY", getApi())
-
         }
-
     }
-
 }
-
-def getApi() {
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-    return properties.getProperty("MOVIE_API");
-}
-
 
 dependencies {
 
     def dependencies = rootProject.ext.presentationDependencies
+
+    implementation project(path: ':domain')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -63,6 +53,4 @@ dependencies {
     api 'com.squareup.retrofit2:retrofit:2.6.0'
     api 'com.squareup.retrofit2:converter-gson:2.6.0'
     api 'com.squareup.okhttp3:logging-interceptor:4.2.1'
-
-    implementation project(path: ':domain')
 }

@@ -3,9 +3,11 @@ package com.sinarahimi.catmovie.di
 import android.app.Application
 import androidx.room.Room
 import co.com.domain.usecase.movie.MovieUseCaseImp
+import com.sinarahimi.catmovie.BuildConfig
 import com.sinarahimi.catmovie.trend.TrendViewModel
 import com.sinarahimi.data.api.MovieApi
 import com.sinarahimi.data.db.AppDatabase
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -13,7 +15,6 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import sinarahimi.com.data.BuildConfig.BASE_URL
 import sinarahimi.com.data.datasource.movie.MovieApiDataSource
 import sinarahimi.com.data.datasource.movie.MovieApiDataSourceImp
 import sinarahimi.com.data.datasource.movie.MovieDataBaseDataSource
@@ -89,12 +90,29 @@ val databaseModule = module {
 val networkModule = module {
 
     single {
+        Interceptor { chain ->
+
+            val url = chain.request().url.newBuilder()
+                .addQueryParameter("api_key", BuildConfig.API_KEY)
+                .build()
+
+            val requestBuilder = chain.request().newBuilder()
+                .url(url)
+
+            val request = requestBuilder.build()
+
+            chain.proceed(request)
+        }
+    }
+
+    single {
 
         OkHttpClient.Builder().apply {
             connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
             writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
             readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
             retryOnConnectionFailure(true)
+            addInterceptor(get<Interceptor>())
             addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             })
@@ -104,7 +122,7 @@ val networkModule = module {
     single {
         Retrofit.Builder()
             .client(get<OkHttpClient>())
-            .baseUrl(BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

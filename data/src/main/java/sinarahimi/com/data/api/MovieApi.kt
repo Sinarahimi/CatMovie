@@ -14,12 +14,13 @@ interface MovieApi {
 
     /**
      * Trending
+     * @media_type = movie
+     * @time_window = week
      */
     @GET("/trending/{media_type}/{time_window}")
     suspend fun getTrendingByMediaTypeAndTimeWindow(
-        @Query("api_key") apiKey: String,
-        @Path("media_type") media_type: String,
-        @Path("time_window") time_window: String
+        @Path("media_type") mediaType: String,
+        @Path("time_window") timeWindow: String
     ): Response<Dto.BaseResponse<Dto.Trend>>
 
 
@@ -30,10 +31,9 @@ interface MovieApi {
      */
     @GET("movie/now_playing")
     suspend fun getNowPlaying(
-        @Query("api_key") apiKey: String, @Query("language") language: String,
+        @Query("language") language: String,
         @Query("page") page: Int
     ): Response<Dto.BaseResponse<Dto.NowPlaying>>
-
 
     sealed class Dto {
 
