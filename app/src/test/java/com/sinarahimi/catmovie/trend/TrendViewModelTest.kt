@@ -6,6 +6,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.sinarahimi.catmovie.di.*
 import com.sinarahimi.catmovie.getOrAwaitValue
 import io.mockk.MockKAnnotations
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.not
@@ -74,6 +75,7 @@ class TrendViewModelTest : KoinTest {
     val mediaType = "movie"
     val timeWindow = "week"
 
+    @ExperimentalCoroutinesApi
     @Test
     fun `make a test`() =runBlockingTest {
 
