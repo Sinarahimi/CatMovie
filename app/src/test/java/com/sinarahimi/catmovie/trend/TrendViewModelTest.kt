@@ -1,8 +1,12 @@
 package com.sinarahimi.catmovie.trend
 
+import android.os.Build
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.sinarahimi.catmovie.di.*
 import com.sinarahimi.catmovie.getOrAwaitValue
+import io.mockk.MockKAnnotations
+import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.not
 import org.hamcrest.Matchers.nullValue
@@ -10,24 +14,37 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
+import org.koin.core.context.startKoin
+import org.koin.test.KoinTest
+import org.koin.test.inject
+import org.robolectric.annotation.Config
 import sinarahimi.com.domain.usecase.movie.MovieUseCase
 
 /**
  * Created by Sina Rahimi on 10/4/2020.
  */
 @RunWith(AndroidJUnit4::class)
-class TrendViewModelTest {
+@Config(sdk = [Build.VERSION_CODES.P])
+class TrendViewModelTest : KoinTest {
 
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
-    @Mock
-    lateinit var movieUseCase: MovieUseCase
+
+     val movieUseCase: MovieUseCase by inject()
 
     @Before
     fun setUp() {
 
+        MockKAnnotations.init(this)
+        //Start Koin with required dependencies
+        startKoin {modules(
+            useCasesModule,
+            viewModelModule,
+            repositoryModule,
+            databaseModule,
+            networkModule,
+        ) }
     }
 //@Test
 //fun test_login_view_model_data_populates_expected_value(){
@@ -58,7 +75,7 @@ class TrendViewModelTest {
     val timeWindow = "week"
 
     @Test
-    fun getTrendsLiveData() {
+    fun `make a test`() =runBlockingTest {
 
         // Given a fresh TrendViewModel
         val trendViewModel = TrendViewModel(movieUseCase)
@@ -69,7 +86,7 @@ class TrendViewModelTest {
         // Then the trend list event is triggered
         val value = trendViewModel.trendsLiveData.getOrAwaitValue()
 
-        assertThat(value,not(nullValue()))
+        assertThat(value, not(nullValue()))
     }
 
     @Test
